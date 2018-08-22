@@ -1,6 +1,7 @@
 package com.tunt.lib.recyclerview.selector
 
 import android.util.SparseArray
+import com.tunt.lib.recyclerview.expandable.ExpandableUtils
 import com.tunt.lib.recyclerview.expandable.Group
 
 /**
@@ -68,5 +69,33 @@ class GroupSelector(groups: ArrayList<Group>) : Selector() {
     }
 
     override fun setSelectedInternal(position: Int, isSelected: Boolean) {
+        val groupIndex = findGroupIndexOfItem(position)
+        val realPosition = findRealPositionOfItem(position)
+        setItemSelected(groupIndex, realPosition, isSelected)
     }
+
+    /**
+     * Override it to ensure selected item is definitely original index
+     *
+     * @return
+     */
+    override fun getSelected(): List<Int> {
+        val result = ArrayList<Int>()
+        for (i in 0 until groupSelected.size()) {
+            result.addAll(groupSelected.valueAt(i).getSelected())
+        }
+        return result
+    }
+
+    override fun isSelected(position: Int): Boolean {
+        val groupIndex = findGroupIndexOfItem(position)
+        val realPosition = findRealPositionOfItem(position)
+        return groupSelected[groupIndex].isSelected(realPosition)
+    }
+
+    private fun findGroupIndexOfItem(position: Int): Int = ExpandableUtils.findGroupIndexOfItem(groups, position)
+
+    private fun findRealPositionOfItem(position: Int): Int = ExpandableUtils.findRealPositionOfItem(groups, position)
+
+    private fun getGroupSelected(groupIndex: Int): List<Int> = groupSelected[groupIndex].getSelected()
 }

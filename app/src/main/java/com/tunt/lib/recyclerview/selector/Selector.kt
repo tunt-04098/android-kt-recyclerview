@@ -19,7 +19,7 @@ abstract class Selector {
 
     fun toggle(position: Int) = setSelected(position, !isSelected(position))
 
-    fun getSelected(): List<Int> {
+    open fun getSelected(): List<Int> {
         val selectedList = ArrayList<Int>()
         for (position in 0 until selected.size()) {
             if (selected.valueAt(position)) {
@@ -29,7 +29,7 @@ abstract class Selector {
         return selectedList
     }
 
-    fun isSelected(position: Int): Boolean = selected.get(position, false)
+    open fun isSelected(position: Int): Boolean = selected.get(position, false)
 
     fun addOnSelectorChangeListener(listener: OnSelectorChangeListener) {
         if (!changeListener.contains(listener)) {
