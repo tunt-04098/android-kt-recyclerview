@@ -47,7 +47,7 @@ class GroupSelector(groups: ArrayList<Group>) : Selector() {
         notifySelectorChange()
     }
 
-    fun setGroupSelected(vararg groupSelected: Int) {
+    fun setGroupSelected(groupSelected: IntArray) {
         if (groups == null) {
             throw IllegalStateException("Must setup groups first")
         }
@@ -57,7 +57,7 @@ class GroupSelector(groups: ArrayList<Group>) : Selector() {
         notifySelectorChange()
     }
 
-    fun setGroupSelected(vararg groupSelected: List<Int>) {
+    fun setGroupSelected(groupSelected: Array<List<Int>?>) {
         for (groupIndex in 0 until groupSelected.size) {
             val selected = groupSelected[groupIndex]
             if (selected == null || selected.isEmpty()) continue

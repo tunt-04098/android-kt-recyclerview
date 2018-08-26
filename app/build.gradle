@@ -49,6 +49,9 @@ dependencies {
     implementation "com.jakewharton.rxbinding2:rxbinding-design:$rootProject.rxbindingVersion"
     implementation "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7:$rootProject.rxbindingVersion"
 
+    // sticky
+    implementation "com.timehop.stickyheadersrecyclerview:library:$rootProject.stickyheadersRecyclerviewVersion@aar"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

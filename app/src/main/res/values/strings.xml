@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">android-kt-recyclerview</string>
+    <string name="paging_error">Network error. Click to retry</string>
+    <string name="retry">Retry</string>
 </resources>
